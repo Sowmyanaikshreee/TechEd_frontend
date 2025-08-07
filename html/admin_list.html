@@ -245,7 +245,7 @@
   <div class="sidebar" id="sidebar">
     <a href="upload.html" class="menu-item"><i class="fas fa-file-upload"></i> <span data-key="upload-files">Upload Files</span></a>
     <a href="admin_list.html" class="menu-item active"><i class="fas fa-user-shield"></i> <span data-key="list-admin">List Admin</span></a>
-    <a href="teacher_list.html" class="menu-item"><i class="fas fa-user-graduate"></i> <span data-key="list-teacher">List Teacher</span></a>
+    <a href="teacher_list.html" class="menu-item"><i class="fas fa-user-graduate"></i> <span data-key="list-teacher">List Techie</span></a>
 
     <div class="sidebar-toggle-wrapper">
       <button class="toggle-btn" id="toggleBtn"><i class="fas fa-bars"></i></button>
@@ -289,7 +289,7 @@
     });
 
     async function fetchAdmins() {
-      const res = await fetch("https://kbuddy.ai/api/list_users?role=admin");
+      const res = await fetch("http://127.0.0.1:8001/list_users?role=admin");
       const admins = await res.json();
       const tbody = document.querySelector("#adminTable tbody");
       tbody.innerHTML = "";
@@ -311,7 +311,7 @@
     async function deleteAdmin(id) {
       const form = new FormData();
       form.append("id", id);
-      await fetch("https://kbuddy.ai/api/delete_user/", { method: "POST", body: form });
+      await fetch("http://127.0.0.1:8001/api/delete_user/", { method: "POST", body: form });
       fetchAdmins();
     }
 
@@ -333,7 +333,7 @@
         name: document.getElementById("updName").value,
         email: document.getElementById("updEmail").value
       };
-      fetch("https://kbuddy.ai/api/update_user/", {
+      fetch("http://127.0.0.1:8001/api/update_user/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, metadata })
@@ -350,7 +350,7 @@
     "home": "Home", "about": "About", "contact": "Contact Us",
     "admin": "Admin", "user": "User",
     "list-admin": "List Admin",
-    "list-teacher": "List Teacher",
+    "list-teacher": "List Techie",
     "upload-files": "Upload Files",
     "admin-list-title": "Admin List",
     "update-admin": "Update Admin",
@@ -382,7 +382,7 @@
     "home": "होम", "about": "परिचय", "contact": "संपर्क करें",
     "admin": "प्रशासक", "user": "उपयोगकर्ता",
     "list-admin": "प्रशासक सूची",
-    "list-teacher": "शिक्षक सूची",
+    "list-teacher": "टेक्की सूची",
     "upload-files": "फ़ाइलें अपलोड करें",
     "admin-list-title": "प्रशासक सूची",
     "update-admin": "प्रशासक अपडेट करें",
@@ -398,7 +398,7 @@
     "home": "ഹോം", "about": "കുറിച്ച്", "contact": "ബന്ധപ്പെടുക",
     "admin": "അഡ്മിൻ", "user": "ഉപയോക്താവ്",
     "list-admin": "അഡ്മിൻ ലിസ്റ്റ്",
-    "list-teacher": "അധ്യാപകരുടെ ലിസ്റ്റ്",
+    "list-teacher": "ടെക്കി ലിസ്റ്റ്",
     "upload-files": "ഫയലുകൾ അപ്‌ലോഡ് ചെയ്യുക",
     "admin-list-title": "അഡ്മിൻ ലിസ്റ്റ്",
     "update-admin": "അഡ്മിൻ അപ്‌ഡേറ്റ് ചെയ്യുക",

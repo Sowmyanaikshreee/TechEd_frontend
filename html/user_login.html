@@ -376,7 +376,7 @@
       formData.append("g-recaptcha-response", captchaResponse); // ✅ important
 
       try {
-        const response = await fetch("https://kbuddy.ai/api/login_teacher/", {
+        const response = await fetch("http://localhost:8001/login_teacher/", {
           method: "POST",
           body: formData,
         });

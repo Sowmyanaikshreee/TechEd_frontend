@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Teacher Registration</title>
+  <title>Trainer Registration</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -257,7 +257,7 @@
  
   <div class="main">
     <div class="register-box">
-      <h2 data-key="register-title">Teacher Registration</h2>
+      <h2 data-key="register-title">Trainer Registration</h2>
       <form id="registerForm">
         <div class="form-group">
           <label for="name" data-key="label-name">Full Name</label>
@@ -438,7 +438,7 @@
   formData.append("g-recaptcha-response", captchaResponse); // ✅
 
   try {
-    const res = await fetch("https://kbuddy.ai/api/register_teacher/", {
+    const res = await fetch("http://localhost:8001/register_teacher/", {
       method: "POST",
       body: formData,
     });
@@ -474,7 +474,7 @@ const translations = {
   en: {
     "admin": "Admin", "user": "User",
      "home": "Home",
-    "register-title": "Teacher Registration",
+    "register-title": "Trainer Registration",
     "label-name": "Full Name",
     "label-email": "Email ID",
     "label-password": "Password",
@@ -493,7 +493,7 @@ const translations = {
     "admin": "ನಿರ್ವಾಹಕ", "user": "ಬಳಕೆದಾರ",
     "home": "ಮುಖಪುಟ","about": "ಬಗ್ಗೆ",
     "contact": "ಸಂಪರ್ಕಿಸಿ",
-    "register-title": "ಶಿಕ್ಷಕ ನೋಂದಣಿ",
+    "register-title": "ತರಬೇತಿದಾರರ ನೋಂದಣಿ",
     "label-name": "ಪೂರ್ಣ ಹೆಸರು",
     "label-email": "ಇಮೇಲ್ ಐಡಿ",
     "label-password": "ಪಾಸ್ವರ್ಡ್",

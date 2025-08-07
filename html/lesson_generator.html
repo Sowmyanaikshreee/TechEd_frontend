@@ -274,7 +274,7 @@
 
     const email = localStorage.getItem("userEmail") || "";
     const emailSafe = email.replace(/[@.]/g, "_");
-    const imageUrl = `https://kbuddy.ai/api/profile_photos/${emailSafe}.jpg`;
+    const imageUrl = `http://127.0.0.1:8001/profile_photos/${emailSafe}.jpg`;
 
     document.getElementById("profile-name").innerText = localStorage.getItem("userName") || "User";
     document.getElementById("profile-grade").innerText = "Grade: " + (localStorage.getItem("userGrade") || "-");
@@ -293,7 +293,7 @@
   document.getElementById("topicsArea").innerHTML = "";
 
   try {
-    const res = await fetch("https://kbuddy.ai/api/uploaded_files/");
+    const res = await fetch("http://127.0.0.1:8001/uploaded_files/");
     const data = await res.json();
     const files = data.files_by_category[category] || [];
 
@@ -328,7 +328,7 @@
       }
 
       topicsArea.innerHTML = "<div class='loading'>Loading topics...</div>";
-      const res = await fetch("https://kbuddy.ai/api/ask/", {
+      const res = await fetch("http://127.0.0.1:8001/ask/", {
         method: "POST",
         body: new URLSearchParams({
           category,
@@ -374,7 +374,7 @@
 
       document.getElementById("loadingMsg").style.display = "block";
 
-      const res = await fetch("https://kbuddy.ai/api/generate_lesson_plan", {
+      const res = await fetch("http://127.0.0.1:8001/generate_lesson_plan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -404,7 +404,7 @@
     async function downloadLesson() {
       if (!lessonText) return alert("Please generate a lesson plan first.");
 
-      const res = await fetch("https://kbuddy.ai/api/generate_lesson_plan_pdf", {
+      const res = await fetch("http://127.0.0.1:8001/generate_lesson_plan_pdf", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ plan: lessonText })

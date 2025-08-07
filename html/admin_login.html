@@ -363,7 +363,7 @@
   formData.append("g-recaptcha-response", captchaResponse); // ✅ Add CAPTCHA to form data
 
   try {
-    const res = await fetch("https://kbuddy.ai/api/login_admin/", {
+    const res = await fetch("http://localhost:8001/login_admin/", {
       method: "POST",
       body: formData,
     });

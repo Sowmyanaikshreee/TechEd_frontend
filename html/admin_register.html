@@ -282,7 +282,7 @@
       formData.append("password", password);
 
       try {
-        const res = await fetch("https://kbuddy.ai/api/register_admin/", {
+        const res = await fetch("http://127.0.0.1:8000/api/register_admin/", {
           method: "POST",
           body: formData,
         });

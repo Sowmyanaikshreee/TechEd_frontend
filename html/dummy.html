@@ -16,7 +16,7 @@
       resultDiv.innerText = "Fetching...";
 
       try {
-        const res = await fetch("https://kbuddy.ai/api/real_youtube_links/?q=gIVE%20SOME%20VIDEO%20ABOUT%20PYTHON%20PROGRAMMING");
+        const res = await fetch("http://127.0.0.1:8000/api/real_youtube_links/?q=gIVE%20SOME%20VIDEO%20ABOUT%20PYTHON%20PROGRAMMING");
         const data = await res.json();
         resultDiv.innerText = JSON.stringify(data, null, 2);
       } catch (err) {

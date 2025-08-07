@@ -311,7 +311,7 @@
 <script>
 const email = localStorage.getItem("userEmail") || "";
 const emailSafe = email.replace(/[@.]/g, "_");
-const imageUrl = `https://kbuddy.ai/api/profile_photos/${emailSafe}.jpg`;
+const imageUrl = `http://127.0.0.1:8000/api/profile_photos/${emailSafe}.jpg`;
  
 document.getElementById("profile-name").innerText = localStorage.getItem("userName") || "User";
 document.getElementById("profile-grade").innerText = "Grade: " + (localStorage.getItem("userGrade") || "-");
@@ -337,7 +337,7 @@ const userSubject = localStorage.getItem("userSubject") || "";
 const folderKey = `class_${userGrade}/${userSubject}`;
 
 try {
-  const res = await fetch("https://kbuddy.ai/api/uploaded_files/");
+  const res = await fetch("http://127.0.0.1:8001/uploaded_files/");
   const data = await res.json();
 
   if (data.files_by_category[folderKey]) {
@@ -415,7 +415,7 @@ async function askQuestion() {
   chatBox.scrollTop = chatBox.scrollHeight;
  
   try {
-    const res = await fetch("https://kbuddy.ai/api/generate_question/", {
+    const res = await fetch("http://127.0.0.1:8001/generate_question/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({ category: selectedCategory }),
@@ -434,7 +434,7 @@ async function askQuestion() {
 async function handleAnswer(userAnswer) {
   appendMessage(userAnswer, "user");
  
-  const res = await fetch("https://kbuddy.ai/api/evaluate_answer/", {
+  const res = await fetch("http://127.0.0.1:8001/evaluate_answer/", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({

@@ -159,7 +159,7 @@
 <body>
 
 <header>
-  Teacher Profile
+  Trainer Profile
   <button class="btn" onclick="logout()">Logout</button>
 </header>
 
@@ -280,7 +280,7 @@
   document.getElementById("profile-subject").value = localStorage.getItem("userSubject") || "";
 
   const emailSafe = email.replace(/[@.]/g, "_");
-  const imageUrl = `https://kbuddy.ai/api/profile_photos/${emailSafe}.jpg`;
+  const imageUrl = `http://127.0.0.1:8001/profile_photos/${emailSafe}.jpg`;
   document.getElementById("profile-photo").src = imageUrl + "?t=" + new Date().getTime();
 
   async function saveProfile() {
@@ -319,7 +319,7 @@
     formData.append("new_password", newPassword);
 
     try {
-      const res = await fetch("https://kbuddy.ai/api/update_profile/", {
+      const res = await fetch("http://127.0.0.1:8001/update_profile/", {
         method: "POST",
         body: formData
       });
@@ -395,7 +395,7 @@
       formData.append("photo", file);
 
       try {
-        const res = await fetch("https://kbuddy.ai/api/upload_profile_photo/", {
+        const res = await fetch("http://127.0.0.1:8001/upload_profile_photo/", {
           method: "POST",
           body: formData
         });

@@ -293,7 +293,7 @@
   <script>
     const email = localStorage.getItem("userEmail") || "";
     const emailSafe = email.replace(/[@.]/g, "_");
-    const imageUrl = `https://kbuddy.ai/api/profile_photos/${emailSafe}.jpg`;
+    const imageUrl = `http://127.0.0.1:8001/profile_photos/${emailSafe}.jpg`;
  
     document.getElementById("profile-name").innerText = localStorage.getItem("userName") || "User";
     document.getElementById("profile-grade").innerText = "Grade: " + (localStorage.getItem("userGrade") || "-");

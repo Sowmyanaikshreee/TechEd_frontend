@@ -224,7 +224,7 @@
   <script>
     const email = localStorage.getItem("userEmail") || "";
     const emailSafe = email.replace(/[@.]/g, "_");
-    const imageUrl = `https://kbuddy.ai/api/profile_photos/${emailSafe}.jpg`;
+    const imageUrl = `http://127.0.0.1:8001/profile_photos/${emailSafe}.jpg`;
  
     document.getElementById("profile-name").innerText = localStorage.getItem("userName") || "User";
     document.getElementById("profile-grade").innerText = "Grade: " + (localStorage.getItem("userGrade") || "-");
@@ -242,7 +242,7 @@
       const text = document.getElementById('inputText').value.trim();
       if (!text) return alert("Please paste some text to summarize.");
  
-      const response = await fetch("https://kbuddy.ai/api/summarize_text", {
+      const response = await fetch("http://127.0.0.1:8001/summarize_text", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text })
@@ -297,7 +297,7 @@
   descriptionElement.textContent = "🔍 Analyzing image, please wait...";
 
   try {
-    const response = await fetch("https://kbuddy.ai/api/analyze_image", {
+    const response = await fetch("http://127.0.0.1:8001/analyze_image", {
       method: "POST",
       body: formData
     });

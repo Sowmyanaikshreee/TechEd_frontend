@@ -331,7 +331,7 @@
   <div class="sidebar" id="sidebar">
     <a href="upload.html" class="menu-item active" ><i class="fas fa-file-upload"></i> <span data-key="upload-files">Upload Files</span></a>
     <a href="admin_list.html" class="menu-item" ><i class="fas fa-user-shield"></i> <span data-key="list-admin">List Admin</span></a>
-    <a href="teacher_list.html" class="menu-item" ><i class="fas fa-user-graduate"></i> <span data-key="list-teacher">List Teacher</span></a>
+    <a href="teacher_list.html" class="menu-item" ><i class="fas fa-user-graduate"></i> <span data-key="list-teacher">List Trainer</span></a>
 
     <div class="sidebar-toggle-wrapper"><button class="toggle-btn" id="toggleBtn"><i class="fas fa-bars"></i></button></div>
   </div>
@@ -474,7 +474,7 @@
       formData.append("category", folderKey);
 
       try {
-        const res = await fetch("https://kbuddy.ai/api/upload/", { method: "POST", body: formData });
+        const res = await fetch("http://127.0.0.1:8001/upload/", { method: "POST", body: formData });
         const result = await res.json();
         showInfoModal(result.message || "File uploaded successfully.");
         fileInput.value = "";
@@ -491,7 +491,7 @@
       const fileList = document.getElementById("fileList");
       fileList.innerHTML = "Loading...";
       try {
-        const res = await fetch("https://kbuddy.ai/api/uploaded_files/");
+        const res = await fetch("http://127.0.0.1:8001/uploaded_files/");
         const data = await res.json();
         fullFileData = data.files_by_category || {};
         renderFilteredFiles();
@@ -530,7 +530,7 @@
             li.className = "file-entry";
             const folderKey = `${classKey}/${subjectKey}`;
             li.innerHTML = `
-              <a href="https://kbuddy.ai/api/files/${folderKey}/${encodeURIComponent(fileName)}" target="_blank">
+              <a href="http://127.0.0.1:8001/files/${folderKey}/${encodeURIComponent(fileName)}" target="_blank">
                 <i class="fas fa-file-pdf"></i> ${fileName}
               </a>
               <button class="delete-btn" onclick="confirmDeleteFile('${fileName}', '${folderKey}')">
@@ -553,7 +553,7 @@
 
     async function deleteFile(filename, category) {
       try {
-        const res = await fetch(`https://kbuddy.ai/api/delete_file?filename=${encodeURIComponent(filename)}&category=${encodeURIComponent(category)}`, { method: "DELETE" });
+        const res = await fetch(`http://127.0.0.1:8001/delete_file?filename=${encodeURIComponent(filename)}&category=${encodeURIComponent(category)}`, { method: "DELETE" });
         const result = await res.json();
         showInfoModal(result.message || "File deleted.");
         fetchUploadedFiles();
@@ -568,7 +568,7 @@
   
   const translations = {
     en: {
-      "list-teacher": "List Teacher",
+      "list-teacher": "List Trainer",
       "list-admin": "List Admin",
       "admin": "Admin", "user": "User",
       "home": "Home",
@@ -583,7 +583,7 @@
       "upload-files": "Upload Files"
     },
     kn: {
-      "list-teacher": "ಬಳಕೆದಾರರ ಪಟ್ಟಿ",
+      "list-teacher": "ತರಬೇತಿದಾರರ ಪಟ್ಟಿ",
       "list-admin": "ನಿರ್ವಾಹಕರ ಪಟ್ಟಿ",
       "admin": "ನಿರ್ವಾಹಕ", "user": "ಬಳಕೆದಾರ",
       "home": "ಮುಖಪುಟ", "about": "ಬಗ್ಗೆ",
@@ -607,7 +607,7 @@
       "upload-btn": "📤 PDF अपलोड करें",
       "uploaded-docs": "अपलोड किए गए दस्तावेज़",
       "filter-class": "कक्षा के अनुसार फ़िल्टर करें:","list-admin": "प्रशासक सूची",
-      "list-teacher": "शिक्षक सूची",
+      "list-teacher": "प्रशिक्षक सूची",
       "upload-files": "फ़ाइलें अपलोड करें",
       "filter-subject": "विषय के अनुसार फ़िल्टर करें:"
     },
@@ -621,7 +621,7 @@
       "upload-btn": "📤 PDF അപ്‌ലോഡ് ചെയ്യുക",
       "uploaded-docs": "അപ്‌ലോഡ് ചെയ്ത ഡോക്യുമെന്റുകൾ",
       "filter-class": "ക്ലാസ്സ് പ്രകാരം ഫിൽട്ടർ ചെയ്യുക:", "list-admin": "അഡ്മിൻ ലിസ്റ്റ്",
-      "list-teacher": "അധ്യാപകരുടെ ലിസ്റ്റ്",
+      "list-teacher": "പരിശീലകൻ ലിസ്റ്റ്",
       "upload-files": "ഫയലുകൾ അപ്‌ലോഡ് ചെയ്യുക",
       "filter-subject": "വിഷയം പ്രകാരം ഫിൽട്ടർ ചെയ്യുക:"
     }

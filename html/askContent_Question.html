@@ -264,7 +264,7 @@
       <div id="chatBox" class="chat-box">
         <div class="bot-intro">
           <img src="images/Aibot 1.jpg" alt="Chatbot avatar" class="avatar-image" />
-          <p class="bot-greeting" data-key="bot-greeting">Hello teacher!<br>How can I assist you today?</p>
+          <p class="bot-greeting" data-key="bot-greeting">Hello Trainer!<br>How can I assist you today?</p>
         </div>
       </div>
  
@@ -282,7 +282,7 @@
   <script>
     const email = localStorage.getItem("userEmail") || "";
     const emailSafe = email.replace(/[@.]/g, "_");
-    const imageUrl = `https://kbuddy.ai/api/profile_photos/${emailSafe}.jpg`;
+    const imageUrl = `http://127.0.0.1:8001/profile_photos/${emailSafe}.jpg`;
  
     document.getElementById("profile-name").innerText = localStorage.getItem("userName") || "User";
     document.getElementById("profile-grade").innerText = "Grade: " + (localStorage.getItem("userGrade") || "-");
@@ -365,7 +365,7 @@ appendMessage(question, "user");
 questionInput.value = "";
 
 try {
-  const res = await fetch("https://kbuddy.ai/api/ask/", {
+  const res = await fetch("http://127.0.0.1:8001/ask/", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({ question, category, file }),
@@ -411,7 +411,7 @@ try {
   const folderKey = `class_${userGrade}/${userSubject}`;
 
   try {
-    const res = await fetch("https://kbuddy.ai/api/uploaded_files/");
+    const res = await fetch("http://127.0.0.1:8001/uploaded_files/");
     const data = await res.json();
 
     const savedLang = localStorage.getItem("selectedLanguage") || "en";
@@ -474,7 +474,7 @@ const translations = {
     "profile":"Profile",
     "logout":"Logout",
     "ask-title": "Ask Content Question",
-    "bot-greeting": "Hello teacher!<br>How can I assist you today?",
+    "bot-greeting": "Hello Trainer!<br>How can I assist you today?",
     "select-file": "Select File",
     "ask-placeholder": "Ask your question..."
     
@@ -487,7 +487,7 @@ const translations = {
      "profile":"ಪ್ರೊಫೈಲ್",
      "logout":"ಲಾಗ್‌ಔಟ್",
      "ask-title": "ವಿಷಯದ ಪ್ರಶ್ನೆ ಕೇಳಿ",
-    "bot-greeting": "ಹಲೋ ಶಿಕ್ಷಕರೆ!<br>ಇಂದು ಹೇಗೆ ಸಹಾಯ ಮಾಡಲಿ?",
+    "bot-greeting": "ಹಲೋ ತರಬೇತುದಾರರೆ!<br>ಇಂದು ಹೇಗೆ ಸಹಾಯ ಮಾಡಲಿ?",
     "select-file": "ಫೈಲ್ ಆಯ್ಕೆಮಾಡಿ",
     "ask-placeholder": "ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ..."
    
@@ -500,7 +500,7 @@ const translations = {
      "profile":"प्रोफ़ाइल",
       "logout":"लॉगआउट",
       "ask-title": "सामग्री प्रश्न पूछें",
-    "bot-greeting": "नमस्ते शिक्षक!<br>आज मैं आपकी कैसे मदद कर सकता हूँ?",
+    "bot-greeting": "नमस्ते प्रशिक्षक!<br>आज मैं आपकी कैसे मदद कर सकता हूँ?",
     "select-file": "फ़ाइल चुनें",
     "ask-placeholder": "अपना प्रश्न यहाँ पूछें..."
       
@@ -513,7 +513,7 @@ const translations = {
      "profile":"പ്രൊഫൈൽ",
       "logout":"ലോഗൗട്ട്",
       "ask-title": "വിഷയ ചോദ്യങ്ങൾ ചോദിക്കുക",
-    "bot-greeting": "ഹലോ അധ്യാപകരേ!<br>ഇന്ന് എങ്ങനെ സഹായിക്കാം?",
+    "bot-greeting": "ഹലോ പരിശീലകൻ!<br>ഇന്ന് എങ്ങനെ സഹായിക്കാം?",
     "select-file": "ഫയൽ തിരഞ്ഞെടുക്കുക",
     "ask-placeholder": "നിങ്ങളുടെ ചോദ്യമിവിടെ ചോദിക്കുക..."
       

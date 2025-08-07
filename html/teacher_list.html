@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>List Users (Teachers / Admins)</title>
+  <title>List Users (Trainers / Admins)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
@@ -244,7 +244,7 @@
     <div class="sidebar" id="sidebar">
       <a href="upload.html" class="menu-item"><i class="fas fa-file-upload"></i> <span data-key="upload-files">Upload Files</span></a>
       <a href="admin_list.html" class="menu-item"><i class="fas fa-user-shield"></i> <span data-key="list-admin">List Admin</span></a>
-      <a href="teacher_list.html" class="menu-item active"><i class="fas fa-user-graduate"></i> <span data-key="list-teacher">List Teacher</span></a>
+      <a href="teacher_list.html" class="menu-item active"><i class="fas fa-user-graduate"></i> <span data-key="list-teacher">List Trainer</span></a>
 
       <div class="sidebar-toggle-wrapper">
         <button class="toggle-btn" id="toggleBtn"><i class="fas fa-bars"></i></button>
@@ -255,7 +255,7 @@
   <!-- Main content -->
   <div class="main-content">
     <div class="container">
-      <h2><i class="fas fa-users" style="color: #4a9bd8; margin-right: 8px;"></i><span data-key="teacher-list">Teacher List</span></h2>
+      <h2><i class="fas fa-users" style="color: #4a9bd8; margin-right: 8px;"></i><span data-key="teacher-list">Trainer List</span></h2>
 
 
       <table id="teacherTable">
@@ -278,7 +278,7 @@
   <!-- Modal -->
   <div id="updateModal" class="modal">
     <div class="modal-content">
-      <h3>Update Teacher</h3>
+      <h3>Update Trainer</h3>
       <input id="updId" type="hidden" />
       <input id="updName" placeholder="Name" />
       <input id="updEmail" placeholder="Email" />
@@ -297,7 +297,7 @@
     });
 
     async function fetchTeachers() {
-      const res = await fetch("https://kbuddy.ai/api/list_users?role=teacher");
+      const res = await fetch("http://localhost:8001/list_users?role=teacher");
       const teachers = await res.json();
       const tbody = document.querySelector("#teacherTable tbody");
       tbody.innerHTML = "";
@@ -322,7 +322,7 @@
     async function deleteTeacher(id) {
       const form = new FormData();
       form.append("id", id);
-      await fetch("https://kbuddy.ai/api/delete_user/", {
+      await fetch("http://127.0.0.1:8001/api/delete_user/", {
         method: "POST",
         body: form
       });
@@ -352,7 +352,7 @@
         subject: document.getElementById("updSubject").value
       };
 
-      fetch("https://kbuddy.ai/api/update_user/", {
+      fetch("http://127.0.0.1:8000/api/update_user/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, metadata })
@@ -367,10 +367,10 @@
 <script>
   const translations = {
     en: {
-      "list-teacher": "List Teacher",
+      "list-teacher": "List Trainer",
       "list-admin": "List Admin",
       "upload-files": "Upload Files",
-      "teacher-list": "Teacher List",
+      "teacher-list": "Trainer List",
       "admin": "Admin", "user": "User",
       "home": "Home", "about": "About", "contact": "Contact Us",
           "id": "ID",
@@ -381,10 +381,10 @@
           "actions": "Actions"
     },
     kn: {
-      "list-teacher": "ಬೋಧಕರ ಪಟ್ಟಿ",
+      "list-teacher": "ತರಬೇತಿದಾರರ ಪಟ್ಟಿ",
       "list-admin": "ನಿರ್ವಾಹಕರ ಪಟ್ಟಿ",
       "upload-files": "ಫೈಲ್‌ಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
-      "teacher-list": "ಶಿಕ್ಷಕರ ಪಟ್ಟಿ",
+      "teacher-list": "ತರಬೇತಿದಾರರ ಪಟ್ಟಿ",
       "admin": "ನಿರ್ವಾಹಕ", "user": "ಬಳಕೆದಾರ",
       "home": "ಮುಖಪುಟ", "about": "ಬಗ್ಗೆ", "contact": "ಸಂಪರ್ಕಿಸಿ",
       "id": "ಐಡಿ",
@@ -395,10 +395,10 @@
       "actions": "ಕ್ರಿಯೆಗಳು"
     },
     hi: {
-      "list-teacher": "शिक्षक सूची",
+      "list-teacher": "प्रशिक्षक सूची",
       "list-admin": "प्रशासक सूची",
       "upload-files": "फ़ाइलें अपलोड करें",
-      "teacher-list": "शिक्षकों की सूची",
+      "teacher-list": "प्रशिक्षक की सूची",
       "admin": "प्रशासक", "user": "उपयोगकर्ता",
       "home": "होम", "about": "परिचय", "contact": "संपर्क करें",
       "id": "आईडी",
@@ -409,10 +409,10 @@
       "actions": "क्रियाएँ"
     },
     ml: {
-      "list-teacher": "അധ്യാപകരുടെ ലിസ്റ്റ്",
+      "list-teacher": "പരിശീലകൻ ലിസ്റ്റ്",
       "list-admin": "അഡ്മിൻ ലിസ്റ്റ്",
       "upload-files": "ഫയലുകൾ അപ്‌ലോഡ് ചെയ്യുക",
-      "teacher-list": "അധ്യാപക പട്ടിക",
+      "teacher-list": "പരിശീലകൻ പട്ടിക",
       "admin": "അഡ്മിൻ", "user": "ഉപയോക്താവ്",
       "home": "ഹോം", "about": "കുറിച്ച്", "contact": "ബന്ധപ്പെടുക",
       "id": "ഐഡി",

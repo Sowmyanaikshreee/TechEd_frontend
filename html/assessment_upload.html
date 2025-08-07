@@ -214,7 +214,7 @@
   <script>
     const email = localStorage.getItem("userEmail") || "";
     const emailSafe = email.replace(/[@.]/g, "_");
-    const imageUrl = `https://kbuddy.ai/api/profile_photos/${emailSafe}.jpg`;
+    const imageUrl = `http://127.0.0.1:8001/profile_photos/${emailSafe}.jpg`;
 
     document.getElementById("profile-name").innerText = localStorage.getItem("userName") || "User";
     document.getElementById("profile-grade").innerText = "Grade: " + (localStorage.getItem("userGrade") || "-");
@@ -223,7 +223,7 @@
     document.getElementById("profile-photo").src = imageUrl;
 
     async function loadCategories() {
-      const res = await fetch("https://kbuddy.ai/api/uploaded_files/");
+      const res = await fetch("http://127.0.0.1:8001/uploaded_files/");
       const data = await res.json();
       const dropdown = document.getElementById("category");
 
@@ -256,7 +256,7 @@
       formData.append("category", category);
 
       try {
-        const res = await fetch("https://kbuddy.ai/api/upload_student_assessment/", {
+        const res = await fetch("http://127.0.0.1:8001/upload_student_assessment/", {
           method: "POST",
           body: formData
         });
